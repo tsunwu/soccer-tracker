@@ -9,7 +9,7 @@ module.exports = function() {
 			allFiles: [
 				components + '/*.js',
 				components + '/**/*.js',
-				sass + '/sass/*.sass',
+				sass + '/*.sass',
 				components + '/**/*.jade',
 				views + '/*.jade'
 			],
@@ -17,8 +17,8 @@ module.exports = function() {
 				components + '/*.js',
 				components + '/**/*.js'
 			],
-			allsass: sass + '/sass/*.sass',
-			cssOutput: sass + '/css',
+			allsass: sass + '/*.sass',
+			cssOutput: css,
 			allcss: css + '/*.css',
 			alltpl: components + '/**/*.jade',
 			index: views + '/index.jade',

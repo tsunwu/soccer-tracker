@@ -1,0 +1,17 @@
+block header
+	div
+		nav.navbar.navbar-default(ng-controller="headerCtrl as header")
+			.navbar-header
+				button.navbar-toggle(type="button" ng-init="navCollapsed=true" ng-click="navCollapsed=!navCollapsed")
+					span.sr-only Togglenavigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+			.collapsed.navbar-collapse(ng-class="!navCollapsed && 'in'")
+				ul.nav.navbar-nav
+					li#home-link(ng-class="header.activeLink('home')"): a(ui-sref="home") Home
+					li#leagues-link(ng-class="header.activeLink('leauges')")
+						a.nav-link.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Leagues
+							.dropdown-menu
+								div.col-sm-6(ng-repeat="item in header.leaguesList")
+									a.dropdown-item(ui-sref="#") {{item.caption}}

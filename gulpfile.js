@@ -45,7 +45,7 @@ gulp.task('wiredep', function() {
 gulp.task('inject', ['wiredep', 'style'], function() {
 	return gulp
 		.src(config.index)
-		.pipe(inject(gulp.src(config.allcss)}))
+		.pipe(inject(gulp.src(config.allcss)))
 		.pipe(gulp.dest(config.view));
 });
 

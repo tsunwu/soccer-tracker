@@ -9,9 +9,13 @@ html
 		// endbower
 		
 		//- inject:css
+		link(rel="stylesheet", href="/public/css/components.css")
+		link(rel="stylesheet", href="/public/css/header.css")
+		link(rel="stylesheet", href="/public/css/main.css")
 		//- endinject
 		
 	body(ng-app="soccerTracker")
+		include ../components/header/header.tpl.jade
 		ui-view
 		
 		// bower:js
@@ -25,5 +29,9 @@ html
 		//- inject:js
 		script(src="/public/components/app.js")
 		script(src="/public/components/routes.js")
+		script(src="/public/components/header/header.controller.js")
+		script(src="/public/components/header/header.factory.js")
 		script(src="/public/components/home/home.controller.js")
+		script(src="/public/components/leagues/leagues.factory.js")
+		script(src="/public/components/others/constant.js")
 		//- endinject
