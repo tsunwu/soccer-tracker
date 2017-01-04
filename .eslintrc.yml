@@ -1,0 +1,22 @@
+env:
+  browser: true
+  node: true
+  es6: true
+extends: ['eslint:recommended', 'angular']
+parserOptions:
+  sourceType: module
+rules:
+  linebreak-style:
+    - error
+    - windows
+  semi:
+    - error
+    - always
+  no-mixed-spaces-and-tabs: 0
+  angular/controller-name: 0
+  angular/controller-as-route: 1
+  angular/controller-as-vm: 1
+  angular/controller-as: 1
+  angular/empty-controller: 1
+  angular/log: 0
+  no-console: 0

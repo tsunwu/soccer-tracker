@@ -1,0 +1,29 @@
+doctype
+html
+	head
+		title Soccer Games Tracker
+		
+		// bower:css
+		link(rel='stylesheet', href='../../bower_components/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet', href='../../bower_components/angular-bootstrap/ui-bootstrap-csp.css')
+		// endbower
+		
+		//- inject:css
+		//- endinject
+		
+	body(ng-app="soccerTracker")
+		ui-view
+		
+		// bower:js
+		script(src='../../bower_components/angular/angular.js')
+		script(src='../../bower_components/angular-ui-router/release/angular-ui-router.js')
+		script(src='../../bower_components/jquery/dist/jquery.js')
+		script(src='../../bower_components/bootstrap/dist/js/bootstrap.js')
+		script(src='../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+		// endbower
+		
+		//- inject:js
+		script(src="/public/components/app.js")
+		script(src="/public/components/routes.js")
+		script(src="/public/components/home/home.controller.js")
+		//- endinject

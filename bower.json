@@ -1,0 +1,35 @@
+{
+  "name": "soccer-tracker",
+  "description": "Soccer Tracker",
+  "main": "index.js",
+  "authors": [
+    "Matthew Wu"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tsunwu/soccer-tracker",
+  "ignore": [
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-router": "^0.3.2",
+    "bootstrap": "^3.3.7",
+    "angular-bootstrap": "^2.4.0"
+  },
+  "overrides": {
+    "angular-bootstrap": {
+      "main": [
+        "./ui-bootstrap-tpls.js",
+        "./ui-bootstrap-csp.css"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "./dist/css/bootstrap.css",
+        "./dist/js/bootstrap.js"
+      ]
+    }
+  }
+}

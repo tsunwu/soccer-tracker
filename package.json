@@ -1,0 +1,40 @@
+{
+  "name": "soccer-tracker",
+  "version": "1.0.0",
+  "description": "Soccer Tracker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsunwu/soccer-tracker.git"
+  },
+  "author": "Matthew Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsunwu/soccer-tracker/issues"
+  },
+  "homepage": "https://github.com/tsunwu/soccer-tracker#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "express": "^4.14.0",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "angular": "^1.6.1",
+    "angular-ui-bootstrap": "^2.4.0",
+    "angular-ui-router": "^0.3.2",
+    "eslint": "^3.12.2",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-plugin-angular": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-flatten": "^0.3.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-sass": "^3.0.0",
+    "wiredep": "^4.0.0"
+  }
+}
