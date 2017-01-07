@@ -1,3 +1,11 @@
+.page-container {
+  padding: 100px; }
+  .page-container .tab-content {
+    margin: 100px 50px; }
+
 .dropdown-menu > div {
   white-space: nowrap;
   padding: 10px 15px; }
+
+.inline-block {
+  display: inline-block; }

@@ -1,0 +1,13 @@
+#team-page .team {
+  padding: 20px; }
+
+#team-page .logo {
+  width: 75px;
+  display: inline-block; }
+  #team-page .logo > img {
+    height: 50px; }
+
+#team-overviews .overviews-img {
+  padding-right: 100px; }
+  #team-overviews .overviews-img > img {
+    height: 300px; }

@@ -1,0 +1,71 @@
+.tab-content
+	h3 {{standings.leagueTable.leagueCaption}} 
+	span Match Day: {{standings.leagueTable.matchday}}
+	table.table.table-hover
+		thead
+			tr
+				th(colspan="3")
+				th(colspan="6") Overall
+				th(colspan="5") Home
+				th(colspan="5") Away
+				th(colspan="2")
+			tr
+				th.align-left Position
+				th
+				th.align-left Team
+				th.overall P
+				th.overall W
+				th.overall D
+				th.overall L
+				th.overall F
+				th.overall A
+				th.home W
+				th.home D
+				th.home L
+				th.home F
+				th.home A
+				th.away W
+				th.away D
+				th.away L
+				th.away F
+				th.away A
+				th GD
+				th Pts
+		tbody
+			tr(ng-repeat="standing in standings.leagueTable.standing | orderBy: '-positions'")
+				td.align-left {{standing.position}}
+				td
+					img(src="{{standing.crestURI}}")
+				td.align-left {{standing.teamName}}
+				td.overall {{standing.playedGames}}
+				td.overall {{standing.wins}}
+				td.overall {{standing.draws}}
+				td.overall {{standing.losses}}
+				td.overall {{standing.goals}}
+				td.overall {{standing.goalsAgainst}}
+				td.home {{standing.home.wins}}
+				td.home {{standing.home.draws}}
+				td.home {{standing.home.losses}}
+				td.home {{standing.home.goals}}
+				td.home {{standing.home.goalsAgainst}}
+				td.away {{standing.away.wins}}
+				td.away {{standing.away.draws}}
+				td.away {{standing.away.losses}}
+				td.away {{standing.away.goals}}
+				td.away {{standing.away.goalsAgainst}}
+				td {{standing.goalDifference}}
+				td {{standing.points}}
+				
+	div.keys
+		span #[strong P: ] Games Played
+		span #[strong W: ] Wins
+		span #[strong D: ] Draws
+		span #[strong L: ] Losses
+		span #[strong F: ] Goals For
+		span #[strong A: ] Goals Against
+		span #[strong GD: ] Goal Difference
+		span #[strong Pts: ] Points
+			
+			
+			
+			

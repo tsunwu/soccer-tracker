@@ -1,0 +1,6 @@
+.tab-content#team-page
+	a.col-sm-6.team(ng-repeat="team in teams.leagueTeams.teams | orderBy: '+name'"
+	ui-sref="team-details({teamId: team.id})")
+		div.logo
+			img(src="{{team.crestUrl}}")
+		span {{team.name}}

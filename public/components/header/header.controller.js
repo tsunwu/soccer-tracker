@@ -18,17 +18,13 @@
         
 		function getLeagueList() {
 			headerFactory.getLeagueList()
-				.then(success => {
-					vm.leaguesList = success.data;
-					console.log(vm.leaguesList);
-				})
-				.catch(error => {
-					console.log(error);
+				.then(response => {
+					vm.leaguesList = response.data;
 				});
 		}
 		
 		function activeLink(viewState) {
-            return ($state.is(viewState) ? "active" : "");
+            return ($state.includes(viewState) ? "active" : "");
         }
 	}
 })();
