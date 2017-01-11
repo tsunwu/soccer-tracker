@@ -3,20 +3,20 @@
 	
 	angular
 		.module('soccerTracker')
-		.controller('leagueCtrl', LeagueController);
+		.controller('cupCtrl', CupController);
 	
-	LeagueController.$inject = ['$state', 'leagueTabList'];
+	CupController.$inject = ['$state', 'cupTabList'];
 	
-	function LeagueController($state, leagueTabList) {
+	function CupController($state, cupTabList) {
 		var vm = this;
 		
-		vm.tabs = leagueTabList;
+		vm.tabs = cupTabList;
 		vm.selectedTab = vm.tabs[0];
 		
 		vm.setSelectedTab = setSelectedTab;
 		vm.tabClass = tabClass;
 		
-		$state.go('league.standings');
+		$state.go('cup.table');
 		
 		function setSelectedTab(tab) {
 			vm.selectedTab = tab;

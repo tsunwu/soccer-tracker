@@ -7,7 +7,13 @@
   #team-page .logo > img {
     height: 50px; }
 
+#team-overviews h3 {
+  padding-bottom: 100px; }
+
 #team-overviews .overviews-img {
   padding-right: 100px; }
   #team-overviews .overviews-img > img {
     height: 300px; }
+
+#roster-details {
+  padding-bottom: 50px; }

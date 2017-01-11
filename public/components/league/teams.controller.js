@@ -13,7 +13,7 @@
 		getTeams();
 		
 		function getTeams() {
-			leagueFactory.getTeams($stateParams.leagueId)
+			leagueFactory.getTeams($stateParams.leagueId || $stateParams.cupId)
 				.then(response => {
 					vm.leagueTeams = response.data;
 					getTeamId(vm.leagueTeams);

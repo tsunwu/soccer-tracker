@@ -10,7 +10,8 @@
 	function LeagueFactory(commonFunc) {
 		return {
 			getTable: getTable,
-			getTeams: getTeams
+			getTeams: getTeams,
+			getCompetitionFixtures: getCompetitionFixtures
 		};
 		
 		function getTable(id) {
@@ -20,6 +21,11 @@
 		
 		function getTeams(id) {
 			const uri = '/competitions/' + id + '/teams';
+			return commonFunc.getReqObj(uri);
+		}
+		
+		function getCompetitionFixtures(id) {
+			const uri = '/competitions/' + id + '/fixtures';
 			return commonFunc.getReqObj(uri);
 		}
 	}

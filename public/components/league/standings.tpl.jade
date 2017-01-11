@@ -32,7 +32,7 @@
 				th GD
 				th Pts
 		tbody
-			tr(ng-repeat="standing in standings.leagueTable.standing | orderBy: '-positions'")
+			tr(ng-repeat="standing in standings.leagueTable.standing | orderBy: '+position'")
 				td.align-left {{standing.position}}
 				td
 					img(src="{{standing.crestURI}}")

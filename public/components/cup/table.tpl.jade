@@ -1,0 +1,28 @@
+.tab-content
+	h3 {{table.cupTable.leagueCaption}}
+	span Match Day: {{table.cupTable.matchday}}
+	div(ng-repeat="(group, standings) in table.cupTable.standings")
+		h3 Group {{group}}
+		table.table.table-hover.responsive
+			thead
+				tr
+					th Position
+					th
+					th Team
+					th Games Played
+					th Points
+					th Goals For
+					th Goals Against
+					th Goals Diff
+			tbody
+				tr(ng-repeat="standing in standings | orderBy: '+rank'")
+					td {{standing.rank}}
+					td
+						img(src="{{standing.crestURI}}")
+					td {{standing.team}}
+					td {{standing.playedGames}}
+					td {{standing.points}}
+					td {{standing.goals}}
+					td {{standing.goalsAgainst}}
+					td {{standing.goalDifference}}
+				

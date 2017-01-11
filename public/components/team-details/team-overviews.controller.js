@@ -17,7 +17,6 @@
 			teamDetailsFactory.getTeamDetails($stateParams.teamId)
 				.then(response => {
 					vm.details = response.data;
-					console.log(vm.details);
 				});
 		}
 	}

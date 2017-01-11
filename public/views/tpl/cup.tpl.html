@@ -1,0 +1,1 @@
+<div class="page-container"><ul class="nav nav-tabs"><li ng-repeat="tab in cup.tabs" tab="tab" ng-class="cup.tabClass(tab)"><a ui-sref="cup{{tab.link}}" ng-click="cup.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>

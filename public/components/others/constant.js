@@ -19,14 +19,24 @@
 				label: 'Teams'
 			}
 		])
+		.constant('cupTabList', [
+			{
+				link: '.table',
+				label: 'Table'
+			},
+			{
+				link: '.teams',
+				label: 'Teams'
+			}
+		])
 		.constant('teamDetailsTabList', [
 			{
 				link: '.overviews',
 				label: 'Overviews'
 			},
 			{
-				link: '.players',
-				label: 'Players'
+				link: '.roster',
+				label: 'Roster'
 			},
 			{
 				link: 'fixtures',

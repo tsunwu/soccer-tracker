@@ -9,9 +9,16 @@ block header
 					span.icon-bar
 			.collapse.navbar-collapse(ng-class="!navCollapsed && 'in'")
 				ul.nav.navbar-nav
-					li#home-link(ng-class="header.activeLink('home')"): a(ui-sref="home") Home
+					li#home-link(ng-class="header.activeLink('home')")
+						a(ui-sref="home") Home
 					li#leagues-link(ng-class="header.activeLink('league')")
-						a.nav-link.dropdown-toggle(data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Leagues
-							.dropdown-menu
-								div.col-sm-6(ng-repeat="item in header.leaguesList")
-									a.dropdown-item(ui-sref="league({leagueId: item.id})") {{item.caption}}
+						a.dropdown-toggle(data-toggle="dropdown") Leagues
+						ul.dropdown-menu
+							div.submenu(ng-repeat="(location, value) in header.leagues" ng-show="value.length != 0") {{location}}
+								li(ng-repeat="league in value")
+									a(ui-sref="league({leagueId: league.id})") {{league.caption}}
+					li#cups-link(ng-class="header.activeLink('cups')")
+						a.dropdown-toggle(data-toggle="dropdown") Cups
+						ul.dropdown-menu
+							li(ng-repeat="cup in header.cups")
+								a(ui-sref="cup({cupId: cup.id})") {{cup.caption}}

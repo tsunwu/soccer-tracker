@@ -6,11 +6,13 @@ html
 		// bower:css
 		link(rel='stylesheet', href='../../bower_components/bootstrap/dist/css/bootstrap.css')
 		link(rel='stylesheet', href='../../bower_components/angular-bootstrap/ui-bootstrap-csp.css')
+		link(rel='stylesheet', href='../../bower_components/components-font-awesome/css/font-awesome.css')
 		// endbower
 		
 		//- inject:css
 		link(rel="stylesheet", href="/public/css/components.css")
 		link(rel="stylesheet", href="/public/css/header.css")
+		link(rel="stylesheet", href="/public/css/leagues.css")
 		link(rel="stylesheet", href="/public/css/main.css")
 		link(rel="stylesheet", href="/public/css/standings.css")
 		link(rel="stylesheet", href="/public/css/teams.css")
@@ -26,14 +28,18 @@ html
 		script(src='../../bower_components/jquery/dist/jquery.js')
 		script(src='../../bower_components/bootstrap/dist/js/bootstrap.js')
 		script(src='../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+		script(src='../../bower_components/moment/moment.js')
+		script(src='../../bower_components/angular-momentjs/angular-momentjs.js')
 		// endbower
 		
 		//- inject:js
 		script(src="/public/components/app.js")
 		script(src="/public/components/routes.js")
+		script(src="/public/components/cup/cup.controller.js")
+		script(src="/public/components/cup/table.controller.js")
+		script(src="/public/components/home/home.controller.js")
 		script(src="/public/components/header/header.controller.js")
 		script(src="/public/components/header/header.factory.js")
-		script(src="/public/components/home/home.controller.js")
 		script(src="/public/components/league/league.controller.js")
 		script(src="/public/components/league/league.factory.js")
 		script(src="/public/components/league/standings.controller.js")
@@ -43,4 +49,5 @@ html
 		script(src="/public/components/team-details/team-details.controller.js")
 		script(src="/public/components/team-details/team-details.factory.js")
 		script(src="/public/components/team-details/team-overviews.controller.js")
+		script(src="/public/components/team-details/team-roster.controller.js")
 		//- endinject

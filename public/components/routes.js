@@ -34,6 +34,24 @@
 				controller: 'teamsCtrl',
 				controllerAs: 'teams'
 			})
+			.state('cup', {
+				url: '/cup/:cupId',
+				templateUrl: './public/views/tpl/cup.tpl.html',
+				controller: 'cupCtrl',
+				controllerAs: 'cup'
+			})
+			.state('cup.table', {
+				url: '/table',
+				templateUrl: './public/views/tpl/table.tpl.html',
+				controller: 'tableCtrl',
+				controllerAs: 'table'
+			})
+			.state('cup.teams', {
+				url: '/teams',
+				templateUrl: './public/views/tpl/teams.tpl.html',
+				controller: 'teamsCtrl',
+				controllerAs: 'teams'
+			})
 			.state('team-details', {
 				url: '/team-details/:teamId',
 				templateUrl: './public/views/tpl/team-details.tpl.html',
@@ -46,11 +64,11 @@
 				controller: 'teamOverviewsCtrl',
 				controllerAs: 'overviews'
 			})
-			.state('team-details.players', {
-				url: '/players',
-				templateUrl: './public/views/tpl/team-players.tpl.html',
-				controller: 'teamPlayersCtrl',
-				controllerAs: 'players'
+			.state('team-details.roster', {
+				url: '/roster',
+				templateUrl: './public/views/tpl/team-roster.tpl.html',
+				controller: 'teamRosterCtrl',
+				controllerAs: 'roster'
 			})
 			.state('team-details.fixtures', {
 				url: '/fixtures',
