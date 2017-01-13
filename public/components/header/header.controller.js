@@ -5,16 +5,21 @@
 		.module('soccerTracker')
 		.controller('headerCtrl', HeaderController);
 	
-	HeaderController.$inject = ['$state', 'pageList', 'headerFactory'];
+	HeaderController.$inject = ['$state', 'pageList', 'headerFactory', 'leagueFactory'];
 	
-	function HeaderController($state, pageList, headerFactory) {
+	function HeaderController($state, pageList, headerFactory, leagueFactory) {
 		var vm = this;
 		
 		vm.pages = pageList;
 		vm.activeLink = activeLink;
 		
+		vm.saveLeagueName = saveLeagueName;
+		
 		getLeagueList();
 		
+		function saveLeagueName(name) {
+			leagueFactory.setLeagueName(name);
+		}
         
 		function getLeagueList() {
 			headerFactory.getLeagueList()

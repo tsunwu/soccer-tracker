@@ -5,24 +5,24 @@
 		.module('soccerTracker')
 		.controller('tableCtrl', TableController);
 	
-	TableController.$inject = ['$stateParams', 'leagueFactory'];
+	TableController.$inject = ['$stateParams', 'leagueFactory', 'noTableMessage'];
 	
-	function TableController($stateParams, leagueFactory) {
+	function TableController($stateParams, leagueFactory, noTableMessage) {
 		var vm = this;
+		
+		vm.hasTable = false;
 		
 		getCupTable();
 		
 		function getCupTable() {
 			leagueFactory.getTable($stateParams.cupId)
 				.then(response => {
-					console.log(response);
-					if(response == undefined)
-						leagueFactory.getCompetitionFixtures($stateParams.cupId)
-							.then(response => {
-								vm.cupTable = response.data;
-							});
-					else 
+					if(angular.isUndefined(response))
+						vm.noTableMessage = noTableMessage;
+					else {
 						vm.cupTable = response.data;
+						vm.hasTable = true;
+					}
 				});
 		}
 	}

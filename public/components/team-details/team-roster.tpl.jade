@@ -1,4 +1,4 @@
-.tab-content(ng-show="{{roster.hasPlayers}}")
+.tab-content(ng-if="roster.hasPlayers")
 	div#roster-details
 		div 
 			span.title Player Count: 
@@ -36,5 +36,5 @@
 				td {{player.position}}
 				td {{roster.getAge(player.dateOfBirth)}}
 				td {{player.nationality}}
-.tab-content(ng=show="!{{roster.hasPlayers}}")
-	h4 Roster is not available!
+.tab-content(ng-if="roster.hasPlayers")
+	h4 {{roster.rosterMessage}}

@@ -1,0 +1,7 @@
+.tab-content#fixture-tab
+	h4 Match Day: {{fixture.matchDay}}
+	div
+		div.col-sm-4.fixture-box(ng-repeat="fixture in fixture.fixturesList | filter:{matchday: fixture.matchDay}")
+			div {{fixture.homeTeamName}}
+			div {{fixture.awayTeamName}}
+			div Match Day: {{fixture.matchday}}

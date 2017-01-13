@@ -9,6 +9,7 @@
 	
 	function soccerTrackerRouter($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise('home');
+		$urlRouterProvider.when('/league/:leagueId', '/league/:leagueId/standings');
 		$stateProvider
 			.state('home', {
 				url: '/home',
@@ -33,6 +34,12 @@
 				templateUrl: './public/views/tpl/teams.tpl.html',
 				controller: 'teamsCtrl',
 				controllerAs: 'teams'
+			})
+			.state('league.fixtures', {
+				url: '/fixtures/:matchday',
+				templateUrl: './public/views/tpl/fixtures.tpl.html',
+				controller: 'leaFixturesCtrl',
+				controllerAs: 'fixture'
 			})
 			.state('cup', {
 				url: '/cup/:cupId',

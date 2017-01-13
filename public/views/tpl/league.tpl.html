@@ -1,1 +1,1 @@
-<div class="page-container"><ul class="nav nav-tabs"><li ng-repeat="tab in league.tabs" tab="tab" ng-class="league.tabClass(tab)"><a ui-sref="league{{tab.link}}" ng-click="league.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>
+<div class="page-container"><h3>{{league.leagueName}}</h3><ul class="nav nav-tabs"><li ng-repeat="tab in league.tabs" tab="tab" ng-class="league.tabClass(tab)"><a ui-sref="league.{{tab.link}}({matchday: league.matchDay})" ng-click="league.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>

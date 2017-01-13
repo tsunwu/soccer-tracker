@@ -1,6 +1,7 @@
 div.page-container
+	h3 {{league.leagueName}}
 	ul.nav.nav-tabs
-		li(ng-repeat="tab in league.tabs" tab="tab" ng-class="league.tabClass(tab)"): a(ui-sref="league{{tab.link}}" 
+		li(ng-repeat="tab in league.tabs" tab="tab" ng-class="league.tabClass(tab)"): a(ui-sref="league.{{tab.link}}({matchday: league.matchDay})" 
 		ng-click="league.setSelectedTab(tab)") {{tab.label}}
 		
 	ui-view

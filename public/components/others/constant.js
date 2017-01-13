@@ -11,12 +11,16 @@
 		])
 		.constant('leagueTabList', [
 			{
-				link: '.standings',
+				link: 'standings',
 				label: 'Standings'
 			},
 			{
-				link: '.teams',
+				link: 'teams',
 				label: 'Teams'
+			},
+			{
+				link: 'fixtures',
+				label: 'Fixtures'
 			}
 		])
 		.constant('cupTabList', [
@@ -36,11 +40,13 @@
 			},
 			{
 				link: '.roster',
-				label: 'Roster'
+				label: 'Squad'
 			},
 			{
 				link: 'fixtures',
 				label: 'Fixtures'
 			}
-		]);
+		])
+		.constant('noTableMessage', 'This competition does not has table or standings.')
+		.constant('squadNotAvailable', 'Squad list is not available.');
 })();

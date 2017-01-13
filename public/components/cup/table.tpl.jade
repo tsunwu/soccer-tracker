@@ -1,4 +1,4 @@
-.tab-content
+.tab-content(ng-if="table.hasTable")
 	h3 {{table.cupTable.leagueCaption}}
 	span Match Day: {{table.cupTable.matchday}}
 	div(ng-repeat="(group, standings) in table.cupTable.standings")
@@ -25,4 +25,5 @@
 					td {{standing.goals}}
 					td {{standing.goalsAgainst}}
 					td {{standing.goalDifference}}
-				
+.tab-content(ng-if="!table.hasTable")
+	h4 {{table.noTableMessage}}

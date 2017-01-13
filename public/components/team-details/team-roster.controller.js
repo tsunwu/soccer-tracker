@@ -5,14 +5,15 @@
 		.module('soccerTracker')
 		.controller('teamRosterCtrl', TeamRosterController);
 	
-	TeamRosterController.$inject = ['$stateParams', '$moment', 'teamDetailsFactory'];
+	TeamRosterController.$inject = ['$stateParams', '$moment', 'teamDetailsFactory', 'squadNotAvailable'];
 	
-	function TeamRosterController($stateParams, $moment, teamDetailsFactory) {
+	function TeamRosterController($stateParams, $moment, teamDetailsFactory, squadNotAvailable) {
 		var vm = this;
 		
 		vm.sortOrder = '+name';
 		vm.propertyName = 'name';
 		vm.reverse = false;
+		vm.rosterMessage = squadNotAvailable;
 		
 		vm.getAge = getAge;
 		vm.sortBy = sortBy;

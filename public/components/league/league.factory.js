@@ -8,11 +8,18 @@
 	LeagueFactory.$inject = ['commonFunc'];
 	
 	function LeagueFactory(commonFunc) {
+		
 		return {
-			getTable: getTable,
-			getTeams: getTeams,
-			getCompetitionFixtures: getCompetitionFixtures
+			getCompetitionDetails,
+			getTable,
+			getTeams,
+			getCompetitionFixtures
 		};
+		
+		function getCompetitionDetails(id) {
+			const uri = '/competitions/' + id;
+			return commonFunc.getReqObj(uri);
+		}
 		
 		function getTable(id) {
 			const uri = '/competitions/' + id + '/leagueTable';
