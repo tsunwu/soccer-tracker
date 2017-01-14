@@ -1,0 +1,7 @@
+div(ng-if="status == 'FINISHED'")
+	span FT
+div(ng-if="status != 'FINISHED'")
+	div
+		span {{date | date: 'MMM dd'}}
+	div
+		span {{date | date: 'hh:mm a'}}

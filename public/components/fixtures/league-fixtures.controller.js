@@ -5,12 +5,19 @@
 		.module('soccerTracker')
 		.controller('leaFixturesCtrl', LeagueFixturesController);
 	
-	LeagueFixturesController.$inject = ['$stateParams', 'leagueFactory', 'fixturesFactory'];
+	LeagueFixturesController.$inject = ['$state', '$stateParams', 'leagueFactory', 'fixturesFactory', '_'];
 	
-	function LeagueFixturesController($stateParams, leagueFactory, fixturesFactory) {
+	function LeagueFixturesController($state, $stateParams, leagueFactory, fixturesFactory, _) {
 		var vm = this;
+		var lastMatchDay = 0;
 		
-		vm.matchDay = $stateParams.matchday;
+		vm.getWinner = getWinner;
+		vm.toPreviousMatchDay = toPreviousMatchDay;
+		vm.toNextMatchDay = toNextMatchDay;
+		vm.isFirstDay = isFirstDay;
+		vm.isLastDay = isLastDay;
+		
+		vm.matchDay = parseInt($stateParams.matchday);
 		
 		getFixtures();
 		
@@ -18,21 +25,39 @@
 			fixturesFactory.getLeagueFixtures($stateParams.leagueId)
 				.then(response => {
 					vm.fixturesList = response.data.fixtures;
+					getTotalMatchDay(vm.fixturesList);
 				});
 		}
 		
-//		function sortByMatchDay(fixtures) {
-//			vm.fixturesList = {};
-//			fixtures.forEach(fixture => {
-//				var matchDay = fixture.matchday;
-//				if(vm.fixturesList[matchDay]) {
-//					vm.fixturesList[matchDay].push(fixture);
-//				} else {
-//					vm.fixturesList[matchDay] = [];
-//				vm.fixturesList[matchDay].push(fixture);
-//				}
-//			});
-//			console.log(vm.fixturesList);
-//		}
+		function getTotalMatchDay(list) {
+			_.orderBy(list, ['matchday', 'date'], ['asc', 'asc']);
+			lastMatchDay = list[list.length -1].matchday;
+		}
+		
+		function getWinner(result, team) {
+			var winner = result.goalsHomeTeam > result.goalsAwayTeam ? 'home' : result.goalsAwayTeam > result.goalsHomeTeam ? 'away' : '';
+			if (team == winner)
+				return 'winner';
+			else
+				return '';
+		}
+		
+		function toPreviousMatchDay() {
+			vm.matchDay = vm.matchDay - 1;
+			$state.go('league.fixtures', {matchday: vm.matchDay}, {notify: false});
+		}
+		
+		function toNextMatchDay() {
+			vm.matchDay = vm.matchDay + 1;
+			$state.go('league.fixtures', {matchday: vm.matchDay}, {notify: false});
+		}
+		
+		function isFirstDay() {
+			return vm.matchDay == 1 ? 'disabled' : '';
+		}
+		
+		function isLastDay() {
+			return vm.matchDay == lastMatchDay ? 'disabled' : '';
+		}
 	}
 })();

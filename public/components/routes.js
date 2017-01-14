@@ -39,7 +39,7 @@
 				url: '/fixtures/:matchday',
 				templateUrl: './public/views/tpl/fixtures.tpl.html',
 				controller: 'leaFixturesCtrl',
-				controllerAs: 'fixture'
+				controllerAs: 'fixtures'
 			})
 			.state('cup', {
 				url: '/cup/:cupId',

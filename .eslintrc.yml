@@ -18,5 +18,6 @@ rules:
   angular/controller-as-vm: 1
   angular/controller-as: 1
   angular/empty-controller: 1
+  angular/window-service: 0
   angular/log: 0
   no-console: 0

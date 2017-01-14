@@ -3,6 +3,7 @@
 	
 	angular
 		.module('soccerTracker')
+		.constant('_', window._)
 		.constant('pageList', [
 				{
 					title: 'Leagues',

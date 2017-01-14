@@ -3,7 +3,8 @@
   .page-container > h3 {
     margin-bottom: 50px; }
   .page-container .tab-content {
-    margin: 100px 50px; }
+    margin: 100px 50px;
+    overflow: hidden; }
 
 table th button {
   border: none;

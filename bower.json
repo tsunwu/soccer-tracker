@@ -18,7 +18,8 @@
     "bootstrap": "^3.3.7",
     "angular-bootstrap": "^2.4.0",
     "angular-momentjs": "^0.2.2",
-    "components-font-awesome": "^4.7.0"
+    "components-font-awesome": "^4.7.0",
+    "lodash": "^4.17.4"
   },
   "overrides": {
     "angular-bootstrap": {

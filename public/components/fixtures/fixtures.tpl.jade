@@ -1,7 +1,19 @@
 .tab-content#fixture-tab
-	h4 Match Day: {{fixture.matchDay}}
-	div
-		div.col-sm-4.fixture-box(ng-repeat="fixture in fixture.fixturesList | filter:{matchday: fixture.matchDay}")
-			div {{fixture.homeTeamName}}
-			div {{fixture.awayTeamName}}
-			div Match Day: {{fixture.matchday}}
+	h4
+		a.fa.fa-chevron-left(ng-click="fixtures.toPreviousMatchDay()" ng-class="fixtures.isFirstDay()") 
+		span.match-day Match Day: {{fixtures.matchDay}}
+		a.fa.fa-chevron-right(ng-click="fixtures.toNextMatchDay()" ng-class="fixtures.isLastDay()")
+	div.fixture-details(ng-repeat="fixture in fixtures.fixturesList | filter:{matchday: fixtures.matchDay}: true | orderBy: '+date'")
+		.fixture-box
+			.match-details
+				div
+					span(ng-class="fixtures.getWinner(fixture.result, 'home')") {{fixture.homeTeamName}}
+				div
+					span(ng-class="fixtures.getWinner(fixture.result, 'away')") {{fixture.awayTeamName}}
+			.match-scores
+				div
+					span(ng-class="fixtures.getWinner(fixture.result, 'home')") {{fixture.result.goalsHomeTeam}}
+				div
+					span(ng-class="fixtures.getWinner(fixture.result, 'away')") {{fixture.result.goalsAwayTeam}}
+			.match-status
+				game-info(status="fixture.status" date="fixture.date")
