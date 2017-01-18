@@ -5,18 +5,16 @@
 		.module('soccerTracker')
 		.controller('teamDetailsCtrl', TeamDetailsController);
 	
-	TeamDetailsController.$inject = ['$state', 'teamDetailsTabList'];
+	TeamDetailsController.$inject = ['$state', 'teamDetailsTabList', 'commonFunc'];
 	
-	function TeamDetailsController($state, teamDetailsTabList) {
+	function TeamDetailsController($state, teamDetailsTabList, commonFunc) {
 		var vm = this;
 		
 		vm.tabs = teamDetailsTabList;
-		vm.selectedTab = vm.tabs[0];
+		vm.selectedTab = commonFunc.getChildState(vm.tabs);
 		
 		vm.setSelectedTab = setSelectedTab;
 		vm.tabClass = tabClass;
-		
-		$state.go('team-details.overviews');
 		
 		function setSelectedTab(tab) {
 			vm.selectedTab = tab;

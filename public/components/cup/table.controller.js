@@ -5,9 +5,9 @@
 		.module('soccerTracker')
 		.controller('tableCtrl', TableController);
 	
-	TableController.$inject = ['$stateParams', 'leagueFactory', 'noTableMessage'];
+	TableController.$inject = ['$stateParams', 'http', 'noTableMessage'];
 	
-	function TableController($stateParams, leagueFactory, noTableMessage) {
+	function TableController($stateParams, http, noTableMessage) {
 		var vm = this;
 		
 		vm.hasTable = false;
@@ -15,7 +15,7 @@
 		getCupTable();
 		
 		function getCupTable() {
-			leagueFactory.getTable($stateParams.cupId)
+			http.getTable($stateParams.cupId)
 				.then(response => {
 					if(angular.isUndefined(response))
 						vm.noTableMessage = noTableMessage;

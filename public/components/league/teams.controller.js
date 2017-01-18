@@ -5,15 +5,15 @@
 		.module('soccerTracker')
 		.controller('teamsCtrl', TeamsController);
 	
-	TeamsController.$inject = ['$stateParams', 'leagueFactory'];
+	TeamsController.$inject = ['$stateParams', 'http'];
 	
-	function TeamsController($stateParams, leagueFactory) {
+	function TeamsController($stateParams, http) {
 		var vm = this;
 		
 		getTeams();
 		
 		function getTeams() {
-			leagueFactory.getTeams($stateParams.leagueId || $stateParams.cupId)
+			http.getTeams($stateParams.leagueId || $stateParams.cupId)
 				.then(response => {
 					vm.leagueTeams = response.data;
 					getTeamId(vm.leagueTeams);

@@ -24,10 +24,6 @@
     
 .winner
     font-weight: 700
-    
-.fixture-details
-    width: 33.33%
-    float: left
         
 .fixture-box
     border: 1px solid $lightGrey
@@ -50,18 +46,25 @@
         & > div
             position: relative
             height: 50%
-            
-            & > span
-                display: block
-                position: absolute
     
     & > .match-details
         width: 100%
+        
+        & > div > a
+            display: block
+            position: absolute
+            color: $textBlack
+            
+            &:hover
+                cursor: pointer
         
     & > .match-scores
         div
             text-align: right
             padding-right: 15px
+            
+        span.penalty
+            padding-right: 5px
     
     & > .match-status
         width: 20%
@@ -73,6 +76,6 @@
         &
             border-color: $hyperLinkHover
     
-        & .match-details span,
+        & .match-details a,
         & .match-scores span
             color: $hyperLinkHover

@@ -3,17 +3,22 @@
 		a.fa.fa-chevron-left(ng-click="fixtures.toPreviousMatchDay()" ng-class="fixtures.isFirstDay()") 
 		span.match-day Match Day: {{fixtures.matchDay}}
 		a.fa.fa-chevron-right(ng-click="fixtures.toNextMatchDay()" ng-class="fixtures.isLastDay()")
-	div.fixture-details(ng-repeat="fixture in fixtures.fixturesList | filter:{matchday: fixtures.matchDay}: true | orderBy: '+date'")
+	div.col-sm-4.col-xs-6(ng-repeat="fixture in fixtures.fixturesList | filter:{matchday: fixtures.matchDay}: true | orderBy: '+date'")
 		.fixture-box
 			.match-details
-				div
-					span(ng-class="fixtures.getWinner(fixture.result, 'home')") {{fixture.homeTeamName}}
-				div
-					span(ng-class="fixtures.getWinner(fixture.result, 'away')") {{fixture.awayTeamName}}
+				div(ng-class="fixtures.getWinner(fixture.result, 'home')")
+					a(ui-sref="team-details({teamId: fixtures.getTeamId(fixture._links.homeTeam.href)})") {{fixture.homeTeamName}}
+				div(ng-class="fixtures.getWinner(fixture.result, 'away')")
+					a(ui-sref="team-details({teamId: fixtures.getTeamId(fixture._links.awayTeam.href)})") {{fixture.awayTeamName}}
 			.match-scores
-				div
-					span(ng-class="fixtures.getWinner(fixture.result, 'home')") {{fixture.result.goalsHomeTeam}}
-				div
-					span(ng-class="fixtures.getWinner(fixture.result, 'away')") {{fixture.result.goalsAwayTeam}}
+				div(ng-class="fixtures.getWinner(fixture.result, 'home')")
+					span.penalty(ng-if="fixture.result.penaltyShootout") ({{fixture.result.penaltyShootout.goalsHomeTeam}})
+					span(ng-if="fixture.result.extraTime") {{fixture.result.extraTime.goalsHomeTeam}}
+					span(ng-if="!fixture.result.extraTime") {{fixture.result.goalsHomeTeam}}
+				div(ng-class="fixtures.getWinner(fixture.result, 'away')")
+					span.penalty(ng-if="fixture.result.penaltyShootout") ({{fixture.result.penaltyShootout.goalsAwayTeam}})
+					span(ng-if="fixture.result.extraTime") {{fixture.result.extraTime.goalsAwayTeam}}
+					span(ng-if="!fixture.result.extraTime") {{fixture.result.goalsAwayTeam}}
 			.match-status
-				game-info(status="fixture.status" date="fixture.date")
+				game-info(status="fixture.status" date="fixture.date" extra="fixture.result.extraTime ? true : false" 
+				penalty="fixture.result.penaltyShootout ? true : false")

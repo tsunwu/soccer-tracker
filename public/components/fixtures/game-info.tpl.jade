@@ -1,7 +1,8 @@
-div(ng-if="status == 'FINISHED'")
-	span FT
-div(ng-if="status != 'FINISHED'")
+div
 	div
 		span {{date | date: 'MMM dd'}}
 	div
-		span {{date | date: 'hh:mm a'}}
+		span(ng-if="status == 'FINISHED' && !extra && !penalty") FT
+		span(ng-if="status == 'FINISHED' && extra && !penalty") FT-ET
+		span(ng-if="status == 'FINISHED' && penalty") FT-PEN
+		span(ng-if="status != 'FINISHED'") {{date | date: 'hh:mm a'}}

@@ -36,5 +36,5 @@
 				td {{player.position}}
 				td {{roster.getAge(player.dateOfBirth)}}
 				td {{player.nationality}}
-.tab-content(ng-if="roster.hasPlayers")
+.tab-content(ng-if="!roster.hasPlayers")
 	h4 {{roster.rosterMessage}}

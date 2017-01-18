@@ -1,1 +1,1 @@
-<div id="team-page" class="tab-content"><a ng-repeat="team in teams.leagueTeams.teams | orderBy: '+name'" ui-sref="team-details({teamId: team.id})" class="col-sm-6 team"><div class="logo"><img src="{{team.crestUrl}}"/></div><span>{{team.name}}</span></a></div>
+<div id="team-page" class="tab-content"><a ng-repeat="team in teams.leagueTeams.teams | orderBy: '+name'" ui-sref="team-details({teamId: team.id})" class="col-sm-6 col-xs-12 team"><div class="logo"><img ng-src="{{team.crestUrl}}"/></div><span>{{team.name}}</span></a></div>

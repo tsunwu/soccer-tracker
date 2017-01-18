@@ -1,1 +1,1 @@
-<div ng-if="status == 'FINISHED'"><span>FT</span></div><div ng-if="status != 'FINISHED'"><div><span>{{date | date: 'MMM dd'}}</span></div><div><span>{{date | date: 'hh:mm a'}}</span></div></div>
+<div><div><span>{{date | date: 'MMM dd'}}</span></div><div><span ng-if="status == 'FINISHED' &amp;&amp; !extra &amp;&amp; !penalty">FT</span><span ng-if="status == 'FINISHED' &amp;&amp; extra &amp;&amp; !penalty">FT-ET</span><span ng-if="status == 'FINISHED' &amp;&amp; penalty">FT-PEN</span><span ng-if="status != 'FINISHED'">{{date | date: 'hh:mm a'}}</span></div></div>

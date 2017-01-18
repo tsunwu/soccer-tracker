@@ -22,10 +22,6 @@
 .winner {
   font-weight: 700; }
 
-.fixture-details {
-  width: 33.33%;
-  float: left; }
-
 .fixture-box {
   border: 1px solid #cccccc;
   background-color: #f8f8f8;
@@ -44,15 +40,19 @@
   .fixture-box .match-scores > div {
     position: relative;
     height: 50%; }
-    .fixture-box .match-details > div > span,
-    .fixture-box .match-scores > div > span {
-      display: block;
-      position: absolute; }
   .fixture-box > .match-details {
     width: 100%; }
+    .fixture-box > .match-details > div > a {
+      display: block;
+      position: absolute;
+      color: #333; }
+      .fixture-box > .match-details > div > a:hover {
+        cursor: pointer; }
   .fixture-box > .match-scores div {
     text-align: right;
     padding-right: 15px; }
+  .fixture-box > .match-scores span.penalty {
+    padding-right: 5px; }
   .fixture-box > .match-status {
     width: 20%;
     padding-left: 15px;
@@ -60,6 +60,6 @@
     border-left: 1px solid #c6c6c6; }
   .fixture-box:hover {
     border-color: #337ab7; }
-  .fixture-box:hover .match-details span,
+  .fixture-box:hover .match-details a,
   .fixture-box:hover .match-scores span {
     color: #337ab7; }

@@ -1,5 +1,4 @@
 .tab-content(ng-if="table.hasTable")
-	h3 {{table.cupTable.leagueCaption}}
 	span Match Day: {{table.cupTable.matchday}}
 	div(ng-repeat="(group, standings) in table.cupTable.standings")
 		h3 Group {{group}}
@@ -18,8 +17,9 @@
 				tr(ng-repeat="standing in standings | orderBy: '+rank'")
 					td {{standing.rank}}
 					td
-						img(src="{{standing.crestURI}}")
-					td {{standing.team}}
+						img(ng-src="{{standing.crestURI}}")
+					td
+						a(ui-sref="team-details({teamId: standing.teamId})") {{standing.team}}
 					td {{standing.playedGames}}
 					td {{standing.points}}
 					td {{standing.goals}}

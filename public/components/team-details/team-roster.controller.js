@@ -5,9 +5,9 @@
 		.module('soccerTracker')
 		.controller('teamRosterCtrl', TeamRosterController);
 	
-	TeamRosterController.$inject = ['$stateParams', '$moment', 'teamDetailsFactory', 'squadNotAvailable'];
+	TeamRosterController.$inject = ['$stateParams', '$moment', 'http', 'squadNotAvailable'];
 	
-	function TeamRosterController($stateParams, $moment, teamDetailsFactory, squadNotAvailable) {
+	function TeamRosterController($stateParams, $moment, http, squadNotAvailable) {
 		var vm = this;
 		
 		vm.sortOrder = '+name';
@@ -21,7 +21,7 @@
 		getTeamRoster();
 		
 		function getTeamRoster() {
-			teamDetailsFactory.getTeamRoster($stateParams.teamId)
+			http.getTeamRoster($stateParams.teamId)
 				.then(response => {
 					vm.rosterList = response.data.players;
 					vm.hasPlayers = vm.rosterList.length > 0;

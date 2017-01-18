@@ -10,6 +10,17 @@
 					pageNmae: 'leagues'
 				}
 		])
+		.constant('regions', {
+			'England': [],
+			'France': [],
+			'Germany': [],
+			'Greece': [],
+			'Italy': [],
+			'Netherlands': [],
+			'Portugal': [],
+			'Spain': [],
+			'Others': []
+		})
 		.constant('leagueTabList', [
 			{
 				link: 'standings',
@@ -21,26 +32,30 @@
 			},
 			{
 				link: 'fixtures',
-				label: 'Fixtures'
+				label: 'Scores & Fixtures'
 			}
 		])
 		.constant('cupTabList', [
 			{
-				link: '.table',
+				link: 'table',
 				label: 'Table'
 			},
 			{
-				link: '.teams',
+				link: 'teams',
 				label: 'Teams'
+			},
+			{
+				link: 'fixtures',
+				label: 'Scores & Fixtures'
 			}
 		])
 		.constant('teamDetailsTabList', [
 			{
-				link: '.overviews',
+				link: 'overviews',
 				label: 'Overviews'
 			},
 			{
-				link: '.roster',
+				link: 'roster',
 				label: 'Squad'
 			},
 			{

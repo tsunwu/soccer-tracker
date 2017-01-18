@@ -5,15 +5,17 @@
 		.module('soccerTracker')
 		.controller('standingsCtrl', StandingsController);
 	
-	StandingsController.$inject = ['$stateParams', 'leagueFactory'];
+	StandingsController.$inject = ['$stateParams', 'http', 'commonFunc'];
 	
-	function StandingsController($stateParams, leagueFactory) {
+	function StandingsController($stateParams, http, commonFunc) {
 		var vm = this;
+		
+		vm.getTeamId = commonFunc.getId;
 		
 		getLeagueTable();
 		
 		function getLeagueTable() {
-			leagueFactory.getTable($stateParams.leagueId)
+			http.getTable($stateParams.leagueId)
 				.then(response => {
 					vm.leagueTable = response.data;
 				});

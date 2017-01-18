@@ -5,9 +5,9 @@
 		.module('soccerTracker')
 		.controller('headerCtrl', HeaderController);
 	
-	HeaderController.$inject = ['$state', 'pageList', 'headerFactory'];
+	HeaderController.$inject = ['$state', 'pageList', 'http', 'regions'];
 	
-	function HeaderController($state, pageList, headerFactory) {
+	function HeaderController($state, pageList, http, regions) {
 		var vm = this;
 		
 		vm.pages = pageList;
@@ -16,7 +16,7 @@
 		getLeagueList();
         
 		function getLeagueList() {
-			headerFactory.getLeagueList()
+			http.getLeagueList()
 				.then(response => {
 					sortCompetitions(response.data);
 				});
@@ -27,17 +27,7 @@
         }
 		
 		function sortCompetitions(data) {
-			var leagues = {
-				'England': [],
-				'France': [],
-				'Germany': [],
-				'Greece': [],
-				'Italy': [],
-				'Netherlands': [],
-				'Portugal': [],
-				'Spain': [],
-				'Others': []
-			};
+			var leagues = regions;
 			var cups = [];
 			data.forEach(item => {
 				var lea = item.league;

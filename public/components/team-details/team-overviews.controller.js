@@ -5,16 +5,16 @@
 		.module('soccerTracker')
 		.controller('teamOverviewsCtrl', TeamOverviewsController);
 	
-	TeamOverviewsController.$inject =['$stateParams', 'teamDetailsFactory'];
+	TeamOverviewsController.$inject =['$stateParams', 'http'];
 	
-	function TeamOverviewsController($stateParams, teamDetailsFactory) {
+	function TeamOverviewsController($stateParams, http) {
 		var vm = this;
 		
 		getTeamDetailsById();
 		
 		
 		function getTeamDetailsById() {
-			teamDetailsFactory.getTeamDetails($stateParams.teamId)
+			http.getTeamDetails($stateParams.teamId)
 				.then(response => {
 					vm.details = response.data;
 				});

@@ -1,1 +1,1 @@
-<div class="page-container"><ul class="nav nav-tabs"><li ng-repeat="tab in details.tabs" tab="tab" ng-class="details.tabClass(tab)"><a ui-sref="team-details{{tab.link}}" ng-click="details.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>
+<div class="page-container"><ul class="nav nav-tabs"><li ng-repeat="tab in details.tabs" tab="tab" ng-class="details.tabClass(tab)"><a ui-sref="team-details.{{tab.link}}" ng-click="details.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>

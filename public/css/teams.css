@@ -2,10 +2,13 @@
   padding: 20px; }
 
 #team-page .logo {
+  margin-right: 25px;
+  display: inline-block;
   width: 75px;
-  display: inline-block; }
+  text-align: center; }
   #team-page .logo > img {
-    height: 50px; }
+    height: 50px;
+    max-width: 75px; }
 
 #team-overviews h3 {
   padding-bottom: 100px; }

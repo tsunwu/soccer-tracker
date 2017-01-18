@@ -11,7 +11,9 @@
 			templateUrl: './public/views/tpl/game-info.tpl.html',
 			scope: {
 				status: '=',
-				date: '='
+				date: '=',
+				extra: '=',
+				penalty: '='
 			}
 		};
 	}

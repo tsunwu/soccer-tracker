@@ -1,6 +1,6 @@
 div.page-container
 	ul.nav.nav-tabs
-		li(ng-repeat="tab in details.tabs" tab="tab" ng-class="details.tabClass(tab)"): a(ui-sref="team-details{{tab.link}}" 
+		li(ng-repeat="tab in details.tabs" tab="tab" ng-class="details.tabClass(tab)"): a(ui-sref="team-details.{{tab.link}}" 
 		ng-click="details.setSelectedTab(tab)") {{tab.label}}
 		
 	ui-view
