@@ -1,0 +1,38 @@
+doctype
+html
+	head
+		title Soccer Games Tracker
+		
+		// bower:css
+		link(rel='stylesheet', href='../bower_components/bootstrap/dist/css/bootstrap.css')
+		link(rel='stylesheet', href='../bower_components/angular-bootstrap/ui-bootstrap-csp.css')
+		link(rel='stylesheet', href='../bower_components/components-font-awesome/css/font-awesome.css')
+		// endbower
+		
+		//- inject:css
+		link(rel="stylesheet", href="/dist/css/components.css")
+		link(rel="stylesheet", href="/dist/css/fixtures.css")
+		link(rel="stylesheet", href="/dist/css/header.css")
+		link(rel="stylesheet", href="/dist/css/leagues.css")
+		link(rel="stylesheet", href="/dist/css/main.css")
+		link(rel="stylesheet", href="/dist/css/teams.css")
+		//- endinject
+		
+	body(ng-app="soccerTracker")
+		include ./components/header/header.tpl.jade
+		ui-view
+		
+		// bower:js
+		script(src='../bower_components/angular/angular.js')
+		script(src='../bower_components/angular-ui-router/release/angular-ui-router.js')
+		script(src='../bower_components/jquery/dist/jquery.js')
+		script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
+		script(src='../bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+		script(src='../bower_components/moment/moment.js')
+		script(src='../bower_components/angular-momentjs/angular-momentjs.js')
+		script(src='../bower_components/lodash/lodash.js')
+		// endbower
+		
+		//- inject:js
+		script(src="/dist/bundle.js")
+		//- endinject

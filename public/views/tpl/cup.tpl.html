@@ -1,1 +1,0 @@
-<div class="page-container"><h3>{{cup.cupDetails.caption}}</h3><ul class="nav nav-tabs"><li ng-repeat="tab in cup.tabs" tab="tab" ng-class="cup.tabClass(tab)"><a ui-sref="cup.{{tab.link}}({matchday: cup.cupDetails.currentMatchday})" ng-click="cup.setSelectedTab(tab)">{{tab.label}}</a></li></ul><ui-view></ui-view></div>

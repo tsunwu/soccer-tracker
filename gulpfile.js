@@ -1,3 +1,5 @@
+'use strict';
+
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const sass = require('gulp-sass');
@@ -6,55 +8,68 @@ const flatten = require('gulp-flatten');
 const wiredep = require('wiredep').stream;
 const inject = require('gulp-inject');
 const nodemon = require('gulp-nodemon');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
 
 const config = require('./gulp.config')();
 
-gulp.task('eslint', function() {
+gulp.task('eslint', () => {
 	return gulp
-		.src(config.alljs)
+		.src(config.js.srcFiles)
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
 });
 
-gulp.task('style', function() {
-	return gulp
-		.src(config.allsass)
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(config.cssOutput));
+gulp.task('browserify', ['eslint'], () => {
+	return browserify({entries: config.js.app, debug: true})
+			.transform('babelify', { presets: ['es2015']})
+			.bundle()
+			.pipe(source('bundle.js'))
+			.pipe(gulp.dest(config.js.dest));
 });
 
-gulp.task('jade', function() {
+gulp.task('style', () => {
 	return gulp
-		.src(config.alltpl)
+		.src(config.styles.sass)
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest(config.styles.dest));
+});
+
+gulp.task('jade', () => {
+	return gulp
+		.src(config.jade.tpl)
 		.pipe(jade())
 		.pipe(flatten())
-		.pipe(gulp.dest(config.tplOutput));
+		.pipe(gulp.dest(config.jade.dest));
 });
 
-gulp.task('wiredep', function() {
+gulp.task('wiredep', () => {
 	const options = config.getWiredepDefaultOptions();
 	
 	return gulp
-		.src(config.index)
+		.src(config.jade.index)
 		.pipe(wiredep(options))
-		.pipe(inject(gulp.src(config.alljs)))
-		.pipe(gulp.dest(config.view));
+		.pipe(inject(gulp.src(config.js.bundle)))
+		.pipe(gulp.dest(config.jade.indexDest));
 });
 
-gulp.task('inject', ['wiredep', 'style'], function() {
+gulp.task('inject', ['wiredep', 'style'], () => {
 	return gulp
-		.src(config.index)
-		.pipe(inject(gulp.src(config.allcss)))
-		.pipe(gulp.dest(config.view));
+		.src(config.jade.index)
+		.pipe(inject(gulp.src(config.styles.cssFiles)))
+		.pipe(gulp.dest(config.jade.indexDest));
 });
 
-gulp.task('watch', function() {
-	gulp.watch([config.allFiles], ['eslint', 'jade', 'style']);
+gulp.task('watch', () => {
+	gulp.watch([config.js.srcFiles], ['eslint', 'browserify']);
+	gulp.watch([config.styles.cssFiles], ['style', 'inject']);
+	gulp.watch([config.jade.index], ['inject']);
 });
 
-gulp.task('nodemon', function() {
-	var stream = nodemon({
+gulp.task('nodemon', () => {
+	let stream = nodemon({
 		script: 'server.js',
 		ext: 'jade js sass',
 		ignore: ['server.js']

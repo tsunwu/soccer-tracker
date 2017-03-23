@@ -3,12 +3,12 @@ const express = require('express');
 
 var app = express();
 
-app.set('views', __dirname + '/public/views');
+app.set('views', __dirname + '/src');
 app.set('view engine', 'jade');
 app.use(express.static(__dirname));
 
 app.get('/tpl/:tplPath', function(req, res) {
-	res.render('tpl/' + req.params.tplPath);
+	res.render(__dirname + 'dist/tpl/' + req.params.tplPath);
 });
 
 app.get('/', function(req, res) {

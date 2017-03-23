@@ -1,42 +1,48 @@
-module.exports = function() {
+module.exports = () => {
 	'use strict';
-	const components = './public/components';
-	const sass = './public/sass';
-	const css = './public/css';
-	const views = './public/views';
+  const dist = './dist';
+  const src = './src';
+  const components = src + '/components';
+	const sass = src + '/sass';
+	const css = dist + '/css';
 	
 	const config = {
-			allFiles: [
-				components + '/*.js',
-				components + '/**/*.js',
-				sass + '/*.sass',
-				components + '/**/*.jade',
-				views + '/*.jade'
-			],
+			js: {
+				app: components + '/app.js',
+				srcFiles: [
+						components + '/*.js',
+						components + '/**/*.js'
+				],
+				dest: dist,
+				bundle: dist + '/bundle.js'
+			},
+			styles: {
+				sass: sass + '/*.sass',
+				dest: css,
+				cssFiles: css + '/*.css'
+			},
+			jade: {
+				index: src + '/index.jade',
+				indexDest: src,
+				tpl: components + '/**/*.jade',
+				dest: dist + '/tpl'
+			},
 			alljs: [
 				components + '/*.js',
 				components + '/**/*.js'
 			],
-			allsass: sass + '/*.sass',
-			cssOutput: css,
-			allcss: css + '/*.css',
-			alltpl: components + '/**/*.jade',
-			index: views + '/index.jade',
-			tplOutput: views + '/tpl',
-			view: views,
 			bower: {
 	            json: require('./bower.json'),
 	            directory: './bower_components'
 	        }
 	};
 	
-	config.getWiredepDefaultOptions = function() {
-        var options = {
+	config.getWiredepDefaultOptions = () => {
+        return {
             bowerJson: config.bower.json,
             directory: config.bower.directory
         };
-        return options;
-    };
+	};
     
 	return config;
 };

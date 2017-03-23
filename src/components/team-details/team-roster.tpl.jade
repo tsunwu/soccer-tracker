@@ -1,0 +1,40 @@
+.tab-content(ng-if="roster.hasPlayers")
+	div#roster-details
+		div 
+			span.title Player Count: 
+			span {{roster.rosterList.length}}
+		div 
+			span.title Average Age: 
+			span {{roster.avgAge}}
+	table.table.table-hover
+		thead
+			tr
+				th
+					button(ng-click="roster.sortBy('name')") Player
+					i.fa.fa-chevron-down(ng-class="{'fa-rotate-180' : roster.reverse}"
+						ng-show="roster.predicate === 'name'")
+				th 
+					button(ng-click="roster.sortBy('jerseyNumber')") Jersey No.
+					i.fa.fa-chevron-down(ng-class="{'fa-rotate-180' : roster.reverse}"
+						ng-show="roster.predicate === 'jerseyNumber'")
+				th 
+					button(ng-click="roster.sortBy('position')") Position
+					i.fa.fa-chevron-down(ng-class="{'fa-rotate-180' : roster.reverse}"
+						ng-show="roster.predicate === 'position'")
+				th 
+					button(ng-click="roster.sortBy('dateOfBirth')") Age
+					i.fa.fa-chevron-up(ng-class="{'fa-rotate-180' : roster.reverse}"
+						ng-show="roster.predicate === 'dateOfBirth'")
+				th 
+					button(ng-click="roster.sortBy('nationality')") Nationality
+					i.fa.fa-chevron-down(ng-class="{'fa-rotate-180' : roster.reverse}"
+						ng-show="roster.predicate === 'nationality'")
+		tbody
+			tr(ng-repeat="player in roster.rosterList | orderBy: roster.predicate: roster.reverse")
+				td {{player.name}}
+				td {{player.jerseyNumber}}
+				td {{player.position}}
+				td {{roster.getAge(player.dateOfBirth)}}
+				td {{player.nationality}}
+.tab-content(ng-if="!roster.hasPlayers")
+	h4 {{roster.rosterMessage}}

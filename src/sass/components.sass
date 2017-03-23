@@ -1,0 +1,35 @@
+@import 'main'
+
+.page-container
+    padding: 50px 100px
+    
+    +respond-to(small-screen)
+            padding: 50px 10px
+    
+    & > h3
+        margin-bottom: 50px
+    
+    .tab-content
+        margin: 100px 50px
+        overflow: hidden
+        
+        +respond-to(small-screen)
+            margin: 100px 0
+
+.table-container
+    overflow-x: auto
+            
+table
+    th
+        button
+            border: none
+            background: inherit
+        
+            &:focus
+                outline: none
+        
+.inline-block
+    display: inline-block
+    
+.title
+    font-weight: 700
