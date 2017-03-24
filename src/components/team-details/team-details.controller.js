@@ -1,5 +1,8 @@
 export default class TeamDetailsController {
+
 	constructor(teamDetailsTabList, commonFunc) {
+		'ngInject';
+
 		this.tabs = teamDetailsTabList;
 		this.selectedTab = commonFunc.getChildState(this.tabs);
 	}
@@ -12,5 +15,3 @@ export default class TeamDetailsController {
 		return this.selectedTab === tab ? 'active' : '';
 	}
 }
-
-TeamDetailsController.$inject = ['teamDetailsTabList', 'commonFunc'];

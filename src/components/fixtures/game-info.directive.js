@@ -1,7 +1,7 @@
-export default class gameInfoDirective {
+export default class GameInfoDirective {
   constructor() {
     this.restrict = 'E';
-    this.templateUrl = './public/views/tpl/game-info.tpl.html';
+    this.templateUrl = './dist/tpl/game-info.tpl.html';
     this.scope = {
       status: '=',
       date: '=',

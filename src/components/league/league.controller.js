@@ -1,14 +1,17 @@
 export default class LeagueController {
+
 	constructor($stateParams, leagueTabList, http, commonFunc) {
-		this.http = http;
+		'ngInject';
+
+		this.getCompetitionDetails = http.getCompetitionDetails;
 		this.tabs = leagueTabList;
-		this.$stateParams = $stateParams;
+		this.leagueId = $stateParams.leagueId;
 		this.selectedTab = commonFunc.getChildState(this.tabs);
 		this.leagueDetails = {};
 	}
 
 	$onInit() {
-    this.http.getCompetitionDetails(this.$stateParams.leagueId)
+    this.getCompetitionDetails(this.leagueId)
         .then(response => {
           this.leagueDetails = response.data;
         });
@@ -22,5 +25,3 @@ export default class LeagueController {
 		return this.selectedTab === tab ? 'active' : '';
 	}
 }
-
-LeagueController.$inject = ['$stateParams', 'leagueTabList', 'http', 'commonFunc'];

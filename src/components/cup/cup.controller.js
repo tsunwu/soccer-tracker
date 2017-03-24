@@ -1,7 +1,10 @@
 export default class CupController {
+
 	constructor($stateParams, http, cupTabList, commonFunc) {
-    this.http = http;
-    this.$stateParams = $stateParams;
+    'ngInject';
+
+    this.getCompetitionDetails = http.getCompetitionDetails;
+    this.cupId = $stateParams.cupId;
 
 		this.tabs = cupTabList;
     this.selectedTab = commonFunc.getChildState(this.tabs);
@@ -9,7 +12,7 @@ export default class CupController {
 	}
 
   $onInit() {
-    this.http.getCompetitionDetails(this.$stateParams.cupId)
+    this.getCompetitionDetails(this.cupId)
         .then(response => {
           this.cupDetails = response.data;
         });
@@ -23,5 +26,3 @@ export default class CupController {
     return this.selectedTab === tab ? 'active' : '';
   }
 }
-
-CupController.$inject = ['$stateParams', 'http', 'cupTabList', 'commonFunc'];

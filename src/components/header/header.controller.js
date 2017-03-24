@@ -1,21 +1,22 @@
 export default class HeaderController {
+
 	constructor($state, http, regions) {
-		this.$state = $state;
-		this.http = http;
+	  'ngInject';
+
+	  this.includes = $state.includes;
+		this.getLeagueList = http.getLeagueList;
     this.regions = regions;
 
 		this.leagues = {};
 		this.cups = [];
-
-		this.getLeagueList();
 	}
 
 	activeLink(viewState) {
-		return this.$state.includes(viewState) ? "active" : "";
+		return this.includes(viewState) ? "active" : "";
 	}
 
-  getLeagueList() {
-    this.http.getLeagueList()
+  $onInit() {
+    this.getLeagueList()
         .then(response => {
           Object.assign(this, HeaderController.sortCompetitions(response.data, this.regions));
         });
@@ -78,5 +79,3 @@ export default class HeaderController {
     };
   }
 }
-
-HeaderController.$inject = ['$state', 'http', 'regions'];

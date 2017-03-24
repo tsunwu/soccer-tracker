@@ -22,15 +22,15 @@ module.exports = () => {
 				cssFiles: css + '/*.css'
 			},
 			jade: {
+				srcFiles: [
+						src + '/index.jade',
+						components + '/**/*.jade'
+				],
 				index: src + '/index.jade',
 				indexDest: src,
 				tpl: components + '/**/*.jade',
 				dest: dist + '/tpl'
 			},
-			alljs: [
-				components + '/*.js',
-				components + '/**/*.js'
-			],
 			bower: {
 	            json: require('./bower.json'),
 	            directory: './bower_components'

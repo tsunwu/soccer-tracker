@@ -1,7 +1,10 @@
 export default class TableController {
+
 	constructor($stateParams, http, noTableMessage) {
-		this.$stateParams = $stateParams;
-		this.http = http;
+    'ngInject';
+
+		this.cupId = $stateParams.cupId;
+		this.getTable = http.getTable;
 
 		this.noTableMessage = noTableMessage;
 		this.hasTable = false;
@@ -10,7 +13,7 @@ export default class TableController {
 	}
 
 	$onInit() {
-		this.http.getTable(this.$stateParams.cupId)
+		this.getTable(this.cupId)
 			.then(response => {
 				if(response) {
           this.cupTable = response.data;
@@ -20,5 +23,3 @@ export default class TableController {
 			});
 	}
 }
-
-TableController.$inject = ['$stateParams', 'http', 'noTableMessage'];

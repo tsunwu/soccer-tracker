@@ -1,16 +1,17 @@
 export default class TeamOverviewsController {
+
 	constructor($stateParams, http) {
+		'ngInject';
+
 		this.teamId = $stateParams.teamId;
-		this.http = http;
+		this.getTeamDetails = http.getTeamDetails;
 		this.details = [];
 	}
 
 	$onInit() {
-		this.http.getTeamDetails(this.teamId)
+		this.getTeamDetails(this.teamId)
 			.then(response => {
 				this.details = response.data;
 			});
 	}
 }
-
-TeamOverviewsController.$inject =['$stateParams', 'http'];

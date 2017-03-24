@@ -10,6 +10,7 @@ const inject = require('gulp-inject');
 const nodemon = require('gulp-nodemon');
 const browserify = require('browserify');
 const babelify = require('babelify');
+const ngAnnotate = require('gulp-ng-annotate');
 const source = require('vinyl-source-stream');
 
 const config = require('./gulp.config')();
@@ -27,6 +28,7 @@ gulp.task('browserify', ['eslint'], () => {
 			.transform('babelify', { presets: ['es2015']})
 			.bundle()
 			.pipe(source('bundle.js'))
+			.pipe(ngAnnotate())
 			.pipe(gulp.dest(config.js.dest));
 });
 
@@ -65,7 +67,7 @@ gulp.task('inject', ['wiredep', 'style'], () => {
 gulp.task('watch', () => {
 	gulp.watch([config.js.srcFiles], ['eslint', 'browserify']);
 	gulp.watch([config.styles.cssFiles], ['style', 'inject']);
-	gulp.watch([config.jade.index], ['inject']);
+	gulp.watch([config.jade.srcFiles], ['jade', 'inject']);
 });
 
 gulp.task('nodemon', () => {

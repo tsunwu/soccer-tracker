@@ -8,9 +8,9 @@ import TableController from './cup/table.controller';
 import TeamDetailsController from './team-details/team-details.controller';
 import TeamOverviewsController from './team-details/team-overviews.controller';
 import TeamRosterController from './team-details/team-roster.controller';
-import TeamsController from './league/teams.controller';
+import TeamsController from './teams/teams.controller';
 
-import gameInfoDirective from './fixtures/game-info.directive';
+import GameInfoDirective from './fixtures/game-info.directive';
 import httpFactory from './others/http.factory';
 import CommonFunction from './others/common-functions';
 import soccerTrackerRouter from './routes';
@@ -39,8 +39,8 @@ angular
     .controller('teamRosterCtrl', TeamRosterController)
     .controller('teamsCtrl', TeamsController)
     .config(soccerTrackerRouter)
-    .directive('gameInfo', gameInfoDirective)
-    .service('commonFunc', CommonFunction)
+    .directive('gameInfo', () => new GameInfoDirective())
+    .factory('commonFunc', CommonFunction)
     .factory('http', httpFactory)
     .constant('_', window._)
     .constant('cupTabList', CupTabList)

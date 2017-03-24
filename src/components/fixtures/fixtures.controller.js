@@ -1,9 +1,12 @@
 export default class FixturesController {
+
 	constructor($state, $stateParams, http, commonFunc, _) {
-		this.$state = $state;
-		this.$stateParams = $stateParams;
-		this.http = http;
-		this.commonFunc = commonFunc;
+    'ngInject';
+
+		this.go = $state.go;
+		this.competitionId = $stateParams.leagueId || $stateParams.cupId;
+		this.getLeagueFixtures = http.getLeagueFixtures;
+		this.getId = commonFunc.getId;
 		this._ = _;
 
 		this.fixturesList = [];
@@ -13,7 +16,7 @@ export default class FixturesController {
 	}
 
 	$onInit() {
-		this.http.getLeagueFixtures((this.competitionType === 'league') ? this.$stateParams.leagueId : this.$stateParams.cupId)
+		this.getLeagueFixtures(this.competitionId)
 			.then(response => {
 				this.fixturesList = response.data.fixtures;
 				this.lastMatchDay = this.getTotalMatchDay(this.fixturesList);
@@ -21,7 +24,7 @@ export default class FixturesController {
 	}
 
 	getTeamId(link) {
-		return this.commonFunc.getId(link);
+		return this.getId(link);
 	}
 
 	getTotalMatchDay(list) {
@@ -30,25 +33,20 @@ export default class FixturesController {
 	}
 
 	getWinner(result, team) {
-		let winner = '';
-		if(result.penaltyShootout) {
-			winner = FixturesController.compareGoals(result.penaltyShootout);
-		} else if(result.extraTime) {
-			winner = FixturesController.compareGoals(result.extraTime);
-		} else {
-			winner = FixturesController.compareGoals(result);
-		}
+		let matchResult = result.penaltyShootout || result.extraTime || result;
+		let winner = FixturesController.compareGoals(matchResult);
+
 		return team === winner ? 'winner' : '';
 	}
 
 	toPreviousMatchDay() {
 		this.matchDay = this.matchDay - 1;
-		this.$state.go(this.competitionType + '.fixtures', {matchday: this.matchDay}, {notify: false});
+		this.go(this.competitionType + '.fixtures', {matchday: this.matchDay}, {notify: false});
 	}
 
 	toNextMatchDay() {
 		this.matchDay = this.matchDay + 1;
-		this.$state.go(this.competitionType + '.fixtures', {matchday: this.matchDay}, {notify: false});
+		this.go(this.competitionType + '.fixtures', {matchday: this.matchDay}, {notify: false});
 	}
 
 	isFirstDay() {
@@ -63,5 +61,3 @@ export default class FixturesController {
 		return result.goalsHomeTeam > result.goalsAwayTeam ? 'home' : result.goalsAwayTeam > result.goalsHomeTeam ? 'away' : '';
 	}
 }
-
-FixturesController.$inject = ['$state', '$stateParams', 'http', 'commonFunc', '_'];

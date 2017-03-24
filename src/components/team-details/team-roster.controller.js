@@ -1,11 +1,14 @@
 export default class TeamRosterController {
+
 	constructor($stateParams, $moment, http, squadNotAvailable, _) {
+		'ngInject';
+
 		this.$moment = $moment;
-		this.http = http;
 		this.noSquad = squadNotAvailable;
 		this._ = _;
 
 		this.avgAge = 0;
+		this.getTeamRoster = http.getTeamRoster;
 		this.hasPlayers = false;
 		this.predicate = 'name';
     this.reverse = false;
@@ -15,7 +18,7 @@ export default class TeamRosterController {
 	}
 
 	$onInit() {
-		this.http.getTeamRoster(this.teamId)
+		this.getTeamRoster(this.teamId)
 			.then(response => {
 				if(response && !this._.isEmpty(response.data.players)) {
           this.rosterList = response.data.players;
@@ -39,11 +42,9 @@ export default class TeamRosterController {
 	getAvgAge() {
 		let totalAge = 0;
 
-		this.rosterList.forEach(player => {
+		for(let player of this.rosterList) {
 			totalAge += parseInt(this.getAge(player.dateOfBirth));
-		});
+		}
 		return Math.round(totalAge / this.rosterList.length);
 	}
 }
-
-TeamRosterController.$inject = ['$stateParams', '$moment', 'http', 'squadNotAvailable', '_'];

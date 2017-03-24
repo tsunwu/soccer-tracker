@@ -1,10 +1,13 @@
-export default class CommonFunction {
-	constructor($http, $state) {
-		this.$http = $http;
-		this.$state = $state;
-	}
+export default function CommonFunction($http, $state) {
+	'ngInject';
 
-	getReqObj(uri) {
+	return {
+		getReqObj,
+		getChildState,
+		getId
+	};
+
+	function getReqObj(uri) {
 		const req = {
 				method: 'GET',
 				url: 'http://api.football-data.org/v1' + uri,
@@ -14,7 +17,7 @@ export default class CommonFunction {
 					'X-Auth-Token': 'aba00e4543de443c8f9fbbbb0003461d'
 				}
 		};
-		return this.$http(req)
+		return $http(req)
 			.then(data => {
 				return data;
 			})
@@ -23,18 +26,16 @@ export default class CommonFunction {
 			});
 	}
 
-	getChildState(tabs) {
+	function getChildState(tabs) {
 		let childState = {};
-		tabs.forEach(tab => {
-			if(tab.link === this.$state.current.name.split('.')[1])
-				childState = tab;
-		});
+		for(let tab of tabs) {
+      if(tab.link === $state.current.name.split('.')[1])
+        childState = tab;
+		}
 		return (Object.keys(childState).length > 0) ? childState : tabs[0];
 	}
 
-	static getId(link) {
+	function getId(link) {
 		return link.replace('http://api.football-data.org/v1/', '').match(/\d+/);
 	}
 }
-
-CommonFunction.$inject = ['$http', '$state'];

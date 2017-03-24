@@ -1,4 +1,6 @@
 export default function httpFactory(commonFunc) {
+  'ngInject';
+
   return {
     getLeagueFixtures,
     getLeagueList,
@@ -50,5 +52,3 @@ export default function httpFactory(commonFunc) {
     return commonFunc.getReqObj(uri);
   }
 }
-
-httpFactory.$inject = ['commonFunc'];
